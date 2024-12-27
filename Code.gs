@@ -1,6 +1,6 @@
-function fetchExchangeRatesRawData(baseCurrency='USD') {
-  const apiKey = "Your-API-Key"; 
-  const endpoint = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${baseCurrency}`;
+function fetchExchangeRatesRawData() {
+  const apiKey = "your-api-key"; 
+  const endpoint = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`;
   
   
   try {
@@ -24,6 +24,7 @@ function fetchExchangeRatesRawData(baseCurrency='USD') {
      if (sheetData.length === 1 && sheetData[0].length === 1 && sheetData[0][0] === "") {
       sheet.appendRow(["Date", "Base Currency", "Target Currency", "Conversion Rate", "Last Updated Timestamp"]);
     }
+    const baseCurrency='USD'
     for (const [targetCurrency, rate] of Object.entries(rates)) {
       sheet.appendRow([currentDate, baseCurrency, targetCurrency, rate, lastUpdatedTimestamp]);
     }
